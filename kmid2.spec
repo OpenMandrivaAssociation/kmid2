@@ -17,7 +17,6 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	cmake
 BuildRequires:	libalsa-devel
 BuildRequires:	drumstick-devel >= 0.2.99
-Requires:	kde4-macros
 Requires:	kdelibs4-core >= 4.3.0
 Requires:	oxygen-icon-theme
 Requires:	drumstick >= 0.2.99
