@@ -14,7 +14,6 @@ Patch0:		kmid2-0.2.1-drumstick-version.patch
 Patch1:		kmid2-0.2.1-use-timidity-pulse.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	kdelibs4-devel
-BuildRequires:	cmake
 BuildRequires:	libalsa-devel
 BuildRequires:	drumstick-devel >= 0.2.99
 Requires:	kdelibs4-core >= 4.3.0
@@ -33,9 +32,10 @@ It also has a keyboard view to see the notes played by each instrument.
 
 %prep
 %setup -q
-# zap bundled copy of drumstick to guarantee it's never used
+# make sure bundled drumstick isn't used
 rm -rf drumstick
 %patch0 -p0 -b .drumstick-version
+
 # (ahmad) use timidity by default. Also pulseaudio by default since it's enabled
 # by default in mdv installs
 %patch1 -p0
