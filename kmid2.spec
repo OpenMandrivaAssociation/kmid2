@@ -1,6 +1,8 @@
+%define realname kmid
+
 Name:		kmid2
 Version:	2.2.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
 # GPLv2+ for the code, CC-BY-SA for the examples
@@ -12,6 +14,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	kdelibs4-devel
 BuildRequires:	libalsa-devel
 BuildRequires:	drumstick-devel >= 0.3.0
+BuildRequires:	desktop-file-utils
 Requires:	kdelibs4-core >= 4.3.0
 Requires:	oxygen-icon-theme
 Requires:	drumstick >= 0.2.99
@@ -27,7 +30,7 @@ It also has a keyboard view to see the notes played by each instrument.
 
 
 %prep
-%setup -qn kmid-%{version}
+%setup -qn %{realname}-%{version}
 
 # make sure bundled drumstick isn't used
 rm -rf drumstick
@@ -45,18 +48,24 @@ rm -rf %{buildroot}
 
 %makeinstall_std -C build
 
-%find_lang %{name} --with-html
+# fix the .desktop file
+desktop-file-install \
+		--vendor="" \
+		--add-category="AudioVideo" \
+		--dir %{buildroot}%{_kde_applicationsdir} %{buildroot}%{_kde_applicationsdir}/%{realname}.desktop
+
+%find_lang %{realname} --with-html
 
 %clean
 rm -rf %{buildroot}
 
-%files -f %{name}.lang
+%files -f %{realname}.lang
 %defattr(-,root,root,-)
 %doc ChangeLog README TODO
-%{_kde_bindir}/%{name}
-%{_kde_appsdir}/%{name}/*
-%{_kde_applicationsdir}/%{name}.desktop
-%{_kde_datadir}/config.kcfg/*
+%{_kde_bindir}/%{realname}
+%{_kde_appsdir}/%{realname}/*
+%{_kde_applicationsdir}/%{realname}.desktop
+%{_kde_datadir}/config.kcfg/%{realname}.kcfg
 %{_kde_services}/*
 %{_kde_servicetypes}/*
 %{_kde_iconsdir}/hicolor/*/*/*
