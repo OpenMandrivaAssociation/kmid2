@@ -28,6 +28,10 @@ It also has a keyboard view to see the notes played by each instrument.
 
 %prep
 %setup -qn kmid-%{version}
+
+# make sure bundled drumstick isn't used
+rm -rf drumstick
+
 # (ahmad) use timidity by default. Also pulseaudio by default since it's enabled
 # by default in mdv installs
 %patch1 -p0
