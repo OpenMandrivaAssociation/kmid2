@@ -1,6 +1,6 @@
 Name:		kmid2
 Version:	2.2.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
 # GPLv2+ for the code, CC-BY-SA for the examples
