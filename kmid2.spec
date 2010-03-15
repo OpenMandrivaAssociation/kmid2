@@ -28,6 +28,19 @@ color of the lyrics.
 It supports output through external synthesizers, AWE, FM and GUS cards.
 It also has a keyboard view to see the notes played by each instrument.
 
+%files -f %{realname}.lang
+%defattr(-,root,root,-)
+%doc ChangeLog README TODO
+%{_kde_bindir}/%{realname}
+%{_kde_appsdir}/%{realname}/*
+%{_kde_applicationsdir}/%{realname}.desktop
+%{_kde_datadir}/config.kcfg/%{realname}.kcfg
+%{_kde_services}/*
+%{_kde_servicetypes}/*
+%{_kde_iconsdir}/hicolor/*/*/*
+%{_kde_libdir}/kde4/*
+
+#-------------------------------------------------------------------------------
 
 %prep
 %setup -qn %{realname}-%{version}
@@ -58,15 +71,3 @@ desktop-file-install \
 
 %clean
 rm -rf %{buildroot}
-
-%files -f %{realname}.lang
-%defattr(-,root,root,-)
-%doc ChangeLog README TODO
-%{_kde_bindir}/%{realname}
-%{_kde_appsdir}/%{realname}/*
-%{_kde_applicationsdir}/%{realname}.desktop
-%{_kde_datadir}/config.kcfg/%{realname}.kcfg
-%{_kde_services}/*
-%{_kde_servicetypes}/*
-%{_kde_iconsdir}/hicolor/*/*/*
-%{_kde_libdir}/kde4/*
