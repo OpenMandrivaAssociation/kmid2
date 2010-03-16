@@ -2,7 +2,7 @@
 
 Name:		kmid2
 Version:	2.2.2
-Release:	%mkrel 4
+Release:	%mkrel 5
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
 # GPLv2+ for the code, CC-BY-SA for the examples
@@ -47,6 +47,9 @@ It also has a keyboard view to see the notes played by each instrument.
 # (ahmad) use timidity by default. Also pulseaudio by default since it's enabled
 # by default in mdv installs
 %patch1 -p0
+
+# make sure bundled drumstick isn't used
+rm -rf drumstick
 
 %build
 %cmake_kde4
