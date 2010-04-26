@@ -1,8 +1,12 @@
 %define realname kmid
 
+%define major 0
+%define libname %mklibname kmid %major
+%define develname %mklibname -d kmid
+
 Name:		kmid2
-Version:	2.2.2
-Release:	%mkrel 5
+Version:	2.3.0
+Release:	%mkrel 1
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
 # GPLv2+ for the code, CC-BY-SA for the examples
@@ -13,11 +17,11 @@ Patch1:		kmid2-2.2.2-use-timidity-pulse.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	kdelibs4-devel
 BuildRequires:	libalsa-devel
-BuildRequires:	drumstick-devel >= 0.3.0
+BuildRequires:	drumstick-devel >= 0.3.1
 BuildRequires:	desktop-file-utils
 Requires:	kdelibs4-core >= 4.3.0
 Requires:	oxygen-icon-theme
-Requires:	drumstick >= 0.2.99
+Requires:	drumstick >= 0.3.1
 Requires:	TiMidity++
 
 %description
@@ -32,7 +36,7 @@ It also has a keyboard view to see the notes played by each instrument.
 %defattr(-,root,root,-)
 %doc ChangeLog README TODO
 %{_kde_bindir}/%{realname}
-%{_kde_appsdir}/%{realname}/*
+%{_kde_appsdir}/%{realname}
 %{_kde_applicationsdir}/%{realname}.desktop
 %{_kde_datadir}/config.kcfg/%{realname}.kcfg
 %{_kde_services}/*
@@ -42,10 +46,40 @@ It also has a keyboard view to see the notes played by each instrument.
 
 #-------------------------------------------------------------------------------
 
+%package -n %libname
+Group:		Sound
+Summary:	%{name} library package
+Requires:	%name >= %version
+
+%description -n %libname
+%summary.
+
+%files -n %libname
+%defattr(-,root,root,-)
+%{_libdir}/libkmidbackend.so.%{major}*
+
+#-------------------------------------------------------------------------------
+
+%package -n %develname
+Group:		Sound
+Summary:	%{name} developement files
+Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %develname
+This package contains header files needed when building applications based on
+%{name}.
+
+%files -n %develname
+%defattr(-,root,root,-)
+%{_includedir}/%{realname}
+%{_libdir}/libkmidbackend.so
+
+#-------------------------------------------------------------------------------
+
 %prep
 %setup -qn %{realname}-%{version}
-# (ahmad) use timidity by default. Also pulseaudio by default since it's enabled
-# by default in mdv installs
+# (ahmad) use timidity and pulseaudio by default (the latter is enabled in mdv installs)
 %patch1 -p0
 
 # make sure bundled drumstick isn't used
