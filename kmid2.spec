@@ -5,7 +5,7 @@
 %define develname %mklibname -d kmid
 
 Name:		kmid2
-Version:	2.3.0
+Version:	2.3.1
 Release:	%mkrel 1
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
