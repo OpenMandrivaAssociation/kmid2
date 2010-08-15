@@ -1,11 +1,11 @@
 %define realname kmid
 
-%define major 0
+%define major 1
 %define libname %mklibname kmid %major
 %define develname %mklibname -d kmid
 
 Name:		kmid2
-Version:	2.3.1
+Version:	2.4.0
 Release:	%mkrel 1
 Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
@@ -17,7 +17,7 @@ Patch1:		kmid2-2.2.2-use-timidity-pulse.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	kdelibs4-devel
 BuildRequires:	libalsa-devel
-BuildRequires:	drumstick-devel >= 0.3.1
+BuildRequires:	drumstick-devel >= 0.4.0
 BuildRequires:	desktop-file-utils
 Requires:	kdelibs4-core >= 4.3.0
 Requires:	oxygen-icon-theme
@@ -37,12 +37,15 @@ It also has a keyboard view to see the notes played by each instrument.
 %doc ChangeLog README TODO
 %{_kde_bindir}/%{realname}
 %{_kde_appsdir}/%{realname}
+%{_kde_appsdir}/kmid_part/kmid_part.rc
 %{_kde_applicationsdir}/%{realname}.desktop
 %{_kde_datadir}/config.kcfg/%{realname}.kcfg
 %{_kde_services}/*
 %{_kde_servicetypes}/*
 %{_kde_iconsdir}/hicolor/*/*/*
 %{_kde_libdir}/kde4/*
+%{_datadir}/dbus-1/interfaces/org.kde.KMid.xml
+%{_datadir}/dbus-1/interfaces/org.kde.KMidPart.xml
 
 #-------------------------------------------------------------------------------
 
