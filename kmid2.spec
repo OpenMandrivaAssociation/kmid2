@@ -109,3 +109,42 @@ desktop-file-install \
 
 %clean
 rm -rf %{buildroot}
+
+
+%changelog
+* Sat Oct 23 2010 Frank Kober <emuse@mandriva.org> 2.4.0-2mdv2011.0
++ Revision: 587779
+- rebuild for new fluidsynth
+
+* Mon Aug 16 2010 Ahmad Samir <ahmadsamir@mandriva.org> 2.4.0-1mdv2011.0
++ Revision: 570264
+- update to 2.4.0
+- update file list
+
+* Sat Jun 12 2010 Ahmad Samir <ahmadsamir@mandriva.org> 2.3.1-1mdv2010.1
++ Revision: 547949
+- new upstream release 2.3.1
+
+* Mon Apr 26 2010 Ahmad Samir <ahmadsamir@mandriva.org> 2.3.0-1mdv2010.1
++ Revision: 539295
+- new release 2.3.0
+- add a lib and devel packages
+- rediff P0.
+- add back spec hack to make sure system drumstick is used
+
+* Tue Mar 16 2010 Funda Wang <fwang@mandriva.org> 2.2.2-4mdv2010.1
++ Revision: 520660
+- fix desktop
+- new version 2.2.2
+
+  + Ahmad Samir <ahmadsamir@mandriva.org>
+    - fix file list
+    - fix typo in patch
+
+* Wed Feb 24 2010 Ahmad Samir <ahmadsamir@mandriva.org> 0.2.1-1mdv2010.1
++ Revision: 510814
+- remove redundant BR
+- fix requires
+- import kmid2
+
+
