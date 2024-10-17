@@ -11,7 +11,7 @@ Summary:	A MIDI/karaoke player for KDE
 Group:		Sound
 # GPLv2+ for the code, CC-BY-SA for the examples
 License:	GPLv2+ and CC-BY-SA
-URL:		http://userbase.kde.org/KMid2
+URL:		https://userbase.kde.org/KMid2
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/kmid-%{version}.tar.bz2
 Patch1:		kmid2-2.2.2-use-timidity-pulse.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
