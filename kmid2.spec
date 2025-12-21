@@ -15,6 +15,7 @@ URL:		https://userbase.kde.org/KMid2
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/kmid-%{version}.tar.bz2
 Patch1:		kmid2-2.2.2-use-timidity-pulse.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRequires:	make
 BuildRequires:	kdelibs4-devel
 BuildRequires:	libalsa-devel
 BuildRequires:	drumstick-devel >= 0.4.0
